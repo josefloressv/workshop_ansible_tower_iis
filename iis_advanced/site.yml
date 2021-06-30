@@ -1,6 +1,6 @@
 ---
-- name: This is a play within a playbook
-  hosts: windows
+- hosts: windows
+  name: This is a play within a playbook
   vars:
     iis_sites:
       - name: 'Ansible Playbook Test'
@@ -10,21 +10,17 @@
         port: '8081'
         path: 'C:\sites\playbooktest2'
     iis_test_message: "Hello World!  My test IIS Server"
+
   tasks:
     - name: Install IIS
       win_feature:
         name: Web-Server
         state: present
 
-    - name: start iis service
-      win_service:
-        name: W3Svc
-        state: started
-
     - name: Create site directory structure
       win_file:
-       path: "{{ item.path }}"
-       state: directory
+        path: "{{ item.path }}"
+        state: directory
       with_items: "{{ iis_sites }}"
 
     - name: Create IIS site
