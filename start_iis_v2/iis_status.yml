@@ -10,5 +10,4 @@
       register: service_info
 
   - name: Show Status
-    debug:
-      msg: "{{ service_info.stdout }}"
+    debug: var=service_info.stdout_lines
