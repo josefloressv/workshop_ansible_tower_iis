@@ -2,7 +2,7 @@
 - hosts: windows_new
   tasks:
     - name: Check Ansible version
-      command: ansible --version
+      win_shell: ansible --version
       register: ansibleVersion
 
     - name: Print version
