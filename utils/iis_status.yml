@@ -12,4 +12,4 @@
   - name: "print status of service"
     debug: 
       var: service_info
-      verbosity: 2
+      msg: "status {{ service_info }}"
