@@ -2,14 +2,14 @@
 - name: Check status of IIS services
   hosts: windows_new #the host group from my inventory
 
-# listado de tareas
+# task lists
   tasks:
   - name: Status IIS service
     win_service:
       name: W3Svc
       register: service_info
-#      debug:
-#        var: service_info
+
   - name: "print status of service"
     debug: 
       var: service_info
+      verbosity: 2
