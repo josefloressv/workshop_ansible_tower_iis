@@ -1,0 +1,15 @@
+---
+- name: Stop & delete IIS service
+  hosts: windows_new #the host group from my inventory
+
+# listado de tareas
+  tasks:
+  - name: Stop IIS service
+    win_service:
+      name: W3Svc
+      state: stopped
+
+  - name: Remove IIS service
+    win_feature:
+      name: Web-Server
+      state: absent
