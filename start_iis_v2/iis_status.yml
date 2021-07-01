@@ -11,4 +11,4 @@
 
   - name: Show Status
     debug:
-      msg: "{{ service_info }}"
+      msg: "{{ service_info.stdout }}"
