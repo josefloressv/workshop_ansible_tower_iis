@@ -8,5 +8,7 @@
     win_service:
       name: W3Svc
       register: service_info
-      debug: 
+
+  - name: Print status service
+    debug:
         var: service_info
