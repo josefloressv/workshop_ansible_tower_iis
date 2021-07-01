@@ -1,0 +1,27 @@
+---
+- name: Install IIS service
+  hosts: windows_new #the host group from my inventory
+
+# listado de tareas
+  tasks:
+  - name: install IIS service
+    win_feature:
+      name: Web-Server
+      state: present
+
+  - name: start IIS service
+    win_service:
+      name: W3Svc
+      state: started
+      check_mode: yes
+
+  - name: Change Index page of the Website
+    win_copy:
+      content: "{{ iis_test_message }}"
+      dest: C:\Inetpub\wwwroot\index.html
+      check_mode: yes
+  
+  - name: Show website address
+    debug:
+      msg: "http://{{ ansible_host }}"
+      check_mode: yes
