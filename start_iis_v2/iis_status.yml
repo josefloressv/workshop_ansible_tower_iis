@@ -8,3 +8,7 @@
     win_service:
       name: W3Svc
       register: service_info
+
+  - name: Show Status
+    debug:
+      msg: "{{ service_info }}"
